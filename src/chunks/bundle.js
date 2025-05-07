@@ -229,14 +229,13 @@ System.register("chunks:///_virtual/env", [], function (exports) {
 
   return {
     execute: function () {
-      var EDITOR = exports('EDITOR', false);
       var DEBUG = exports('DEBUG', true);
       var DEV = exports('DEV', false);
     }
   };
 });
 
-System.register("chunks:///_virtual/notifyMsg.mjs_cjs=&original=.js", ['./cjs-loader.mjs', './notifyMsg.js'], function (exports, module) {
+System.register("chunks:///_virtual/hall_proto.mjs_cjs=&original=.js", ['./cjs-loader.mjs', './hall_proto.js'], function (exports, module) {
   'use strict';
 
   var loader, __cjsMetaURL;
@@ -252,9 +251,9 @@ System.register("chunks:///_virtual/notifyMsg.mjs_cjs=&original=.js", ['./cjs-lo
       exports(_setter);
     }],
     execute: function () {
-      // I am the facade module who provides access to the CommonJS module './notifyMsg.js'~
+      // I am the facade module who provides access to the CommonJS module './hall_proto.js'~
       if (!__cjsMetaURL) {
-        loader.throwInvalidWrapper('./notifyMsg.js', module.meta.url);
+        loader.throwInvalidWrapper('./hall_proto.js', module.meta.url);
       }
 
       loader.require(__cjsMetaURL);
@@ -402,32 +401,6 @@ System.register("chunks:///_virtual/cjs-loader.mjs", [], function (exports) {
   };
 });
 
-System.register("chunks:///_virtual/commonMsg.mjs_cjs=&original=.js", ['./cjs-loader.mjs', './commonMsg.js'], function (exports, module) {
-  'use strict';
-
-  var loader, __cjsMetaURL;
-
-  return {
-    setters: [function (module) {
-      loader = module.default;
-    }, function (module) {
-      __cjsMetaURL = module.__cjsMetaURL;
-      var _setter = {};
-      _setter.__cjsMetaURL = module.__cjsMetaURL;
-      _setter.default = module.default;
-      exports(_setter);
-    }],
-    execute: function () {
-      // I am the facade module who provides access to the CommonJS module './commonMsg.js'~
-      if (!__cjsMetaURL) {
-        loader.throwInvalidWrapper('./commonMsg.js', module.meta.url);
-      }
-
-      loader.require(__cjsMetaURL);
-    }
-  };
-});
-
 System.register("chunks:///_virtual/hallMsg.mjs_cjs=&original=.js", ['./cjs-loader.mjs', './hallMsg.js'], function (exports, module) {
   'use strict';
 
@@ -454,7 +427,7 @@ System.register("chunks:///_virtual/hallMsg.mjs_cjs=&original=.js", ['./cjs-load
   };
 });
 
-System.register("chunks:///_virtual/hall_proto.mjs_cjs=&original=.js", ['./cjs-loader.mjs', './hall_proto.js'], function (exports, module) {
+System.register("chunks:///_virtual/commonMsg.mjs_cjs=&original=.js", ['./cjs-loader.mjs', './commonMsg.js'], function (exports, module) {
   'use strict';
 
   var loader, __cjsMetaURL;
@@ -470,9 +443,35 @@ System.register("chunks:///_virtual/hall_proto.mjs_cjs=&original=.js", ['./cjs-l
       exports(_setter);
     }],
     execute: function () {
-      // I am the facade module who provides access to the CommonJS module './hall_proto.js'~
+      // I am the facade module who provides access to the CommonJS module './commonMsg.js'~
       if (!__cjsMetaURL) {
-        loader.throwInvalidWrapper('./hall_proto.js', module.meta.url);
+        loader.throwInvalidWrapper('./commonMsg.js', module.meta.url);
+      }
+
+      loader.require(__cjsMetaURL);
+    }
+  };
+});
+
+System.register("chunks:///_virtual/notifyMsg.mjs_cjs=&original=.js", ['./cjs-loader.mjs', './notifyMsg.js'], function (exports, module) {
+  'use strict';
+
+  var loader, __cjsMetaURL;
+
+  return {
+    setters: [function (module) {
+      loader = module.default;
+    }, function (module) {
+      __cjsMetaURL = module.__cjsMetaURL;
+      var _setter = {};
+      _setter.__cjsMetaURL = module.__cjsMetaURL;
+      _setter.default = module.default;
+      exports(_setter);
+    }],
+    execute: function () {
+      // I am the facade module who provides access to the CommonJS module './notifyMsg.js'~
+      if (!__cjsMetaURL) {
+        loader.throwInvalidWrapper('./notifyMsg.js', module.meta.url);
       }
 
       loader.require(__cjsMetaURL);
@@ -615,89 +614,6 @@ System.register("chunks:///_virtual/index-minimal.js", ['./cjs-loader.mjs', './m
 
 
           configure();
-        })();
-
-        _cjsExports = exports('default', module.exports);
-      });
-
-      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
-    }
-  };
-});
-
-System.register("chunks:///_virtual/reader_buffer.js", ['./cjs-loader.mjs', './minimal2.js', './reader.js'], function (exports, module) {
-  'use strict';
-
-  var loader, __cjsMetaURL$2, __cjsMetaURL$1;
-
-  return {
-    setters: [function (module) {
-      loader = module.default;
-    }, function (module) {
-      __cjsMetaURL$2 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$1 = module.__cjsMetaURL;
-    }],
-    execute: function () {
-      exports('default', void 0);
-
-      var _cjsExports;
-
-      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
-        var require = loader.createRequireWithReqMap({
-          "./reader": __cjsMetaURL$1,
-          "./util/minimal": __cjsMetaURL$2
-        }, _require);
-
-        (function () {
-          module.exports = BufferReader; // extends Reader
-
-          var Reader = require("./reader");
-
-          (BufferReader.prototype = Object.create(Reader.prototype)).constructor = BufferReader;
-
-          var util = require("./util/minimal");
-          /**
-           * Constructs a new buffer reader instance.
-           * @classdesc Wire format reader using node buffers.
-           * @extends Reader
-           * @constructor
-           * @param {Buffer} buffer Buffer to read from
-           */
-
-
-          function BufferReader(buffer) {
-            Reader.call(this, buffer);
-            /**
-             * Read buffer.
-             * @name BufferReader#buf
-             * @type {Buffer}
-             */
-          }
-
-          BufferReader._configure = function () {
-            /* istanbul ignore else */
-            if (util.Buffer) BufferReader.prototype._slice = util.Buffer.prototype.slice;
-          };
-          /**
-           * @override
-           */
-
-
-          BufferReader.prototype.string = function read_string_buffer() {
-            var len = this.uint32(); // modifies pos
-
-            return this.buf.utf8Slice ? this.buf.utf8Slice(this.pos, this.pos = Math.min(this.pos + len, this.len)) : this.buf.toString("utf-8", this.pos, this.pos = Math.min(this.pos + len, this.len));
-          };
-          /**
-           * Reads a sequence of bytes preceeded by its length as a varint.
-           * @name BufferReader#bytes
-           * @function
-           * @returns {Buffer} Value read
-           */
-
-
-          BufferReader._configure();
         })();
 
         _cjsExports = exports('default', module.exports);
@@ -1220,6 +1136,161 @@ System.register("chunks:///_virtual/writer.js", ['./cjs-loader.mjs', './minimal2
   };
 });
 
+System.register("chunks:///_virtual/roots.js", ['./cjs-loader.mjs'], function (exports, module) {
+  'use strict';
+
+  var loader;
+  return {
+    setters: [function (module) {
+      loader = module.default;
+    }],
+    execute: function () {
+      exports('default', void 0);
+
+      var _cjsExports;
+
+      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
+        var require = loader.createRequireWithReqMap({}, _require);
+
+        (function () {
+          module.exports = {};
+          /**
+           * Named roots.
+           * This is where pbjs stores generated structures (the option `-r, --root` specifies a name).
+           * Can also be used manually to make roots available accross modules.
+           * @name roots
+           * @type {Object.<string,Root>}
+           * @example
+           * // pbjs -r myroot -o compiled.js ...
+           *
+           * // in another module:
+           * require("./compiled.js");
+           *
+           * // in any subsequent module:
+           * var root = protobuf.roots["myroot"];
+           */
+        })();
+
+        _cjsExports = exports('default', module.exports);
+      });
+
+      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
+    }
+  };
+});
+
+System.register("chunks:///_virtual/writer_buffer.js", ['./cjs-loader.mjs', './minimal2.js', './writer.js'], function (exports, module) {
+  'use strict';
+
+  var loader, __cjsMetaURL$2, __cjsMetaURL$1;
+
+  return {
+    setters: [function (module) {
+      loader = module.default;
+    }, function (module) {
+      __cjsMetaURL$2 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$1 = module.__cjsMetaURL;
+    }],
+    execute: function () {
+      exports('default', void 0);
+
+      var _cjsExports;
+
+      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
+        var require = loader.createRequireWithReqMap({
+          "./writer": __cjsMetaURL$1,
+          "./util/minimal": __cjsMetaURL$2
+        }, _require);
+
+        (function () {
+          module.exports = BufferWriter; // extends Writer
+
+          var Writer = require("./writer");
+
+          (BufferWriter.prototype = Object.create(Writer.prototype)).constructor = BufferWriter;
+
+          var util = require("./util/minimal");
+          /**
+           * Constructs a new buffer writer instance.
+           * @classdesc Wire format writer using node buffers.
+           * @extends Writer
+           * @constructor
+           */
+
+
+          function BufferWriter() {
+            Writer.call(this);
+          }
+
+          BufferWriter._configure = function () {
+            /**
+             * Allocates a buffer of the specified size.
+             * @function
+             * @param {number} size Buffer size
+             * @returns {Buffer} Buffer
+             */
+            BufferWriter.alloc = util._Buffer_allocUnsafe;
+            BufferWriter.writeBytesBuffer = util.Buffer && util.Buffer.prototype instanceof Uint8Array && util.Buffer.prototype.set.name === "set" ? function writeBytesBuffer_set(val, buf, pos) {
+              buf.set(val, pos); // faster than copy (requires node >= 4 where Buffers extend Uint8Array and set is properly inherited)
+              // also works for plain array values
+            }
+            /* istanbul ignore next */
+            : function writeBytesBuffer_copy(val, buf, pos) {
+              if (val.copy) // Buffer values
+                val.copy(buf, pos, 0, val.length);else for (var i = 0; i < val.length;) {
+                // plain array values
+                buf[pos++] = val[i++];
+              }
+            };
+          };
+          /**
+           * @override
+           */
+
+
+          BufferWriter.prototype.bytes = function write_bytes_buffer(value) {
+            if (util.isString(value)) value = util._Buffer_from(value, "base64");
+            var len = value.length >>> 0;
+            this.uint32(len);
+            if (len) this._push(BufferWriter.writeBytesBuffer, len, value);
+            return this;
+          };
+
+          function writeStringBuffer(val, buf, pos) {
+            if (val.length < 40) // plain js is faster for short strings (probably due to redundant assertions)
+              util.utf8.write(val, buf, pos);else if (buf.utf8Write) buf.utf8Write(val, pos);else buf.write(val, pos);
+          }
+          /**
+           * @override
+           */
+
+
+          BufferWriter.prototype.string = function write_string_buffer(value) {
+            var len = util.Buffer.byteLength(value);
+            this.uint32(len);
+            if (len) this._push(writeStringBuffer, len, value);
+            return this;
+          };
+          /**
+           * Finishes the write operation.
+           * @name BufferWriter#finish
+           * @function
+           * @returns {Buffer} Finished buffer
+           */
+
+
+          BufferWriter._configure();
+        })();
+
+        _cjsExports = exports('default', module.exports);
+      });
+
+      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
+    }
+  };
+});
+
 System.register("chunks:///_virtual/reader.js", ['./cjs-loader.mjs', './minimal2.js'], function (exports, module) {
   'use strict';
 
@@ -1663,161 +1734,6 @@ System.register("chunks:///_virtual/reader.js", ['./cjs-loader.mjs', './minimal2
   };
 });
 
-System.register("chunks:///_virtual/writer_buffer.js", ['./cjs-loader.mjs', './minimal2.js', './writer.js'], function (exports, module) {
-  'use strict';
-
-  var loader, __cjsMetaURL$2, __cjsMetaURL$1;
-
-  return {
-    setters: [function (module) {
-      loader = module.default;
-    }, function (module) {
-      __cjsMetaURL$2 = module.__cjsMetaURL;
-    }, function (module) {
-      __cjsMetaURL$1 = module.__cjsMetaURL;
-    }],
-    execute: function () {
-      exports('default', void 0);
-
-      var _cjsExports;
-
-      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
-        var require = loader.createRequireWithReqMap({
-          "./writer": __cjsMetaURL$1,
-          "./util/minimal": __cjsMetaURL$2
-        }, _require);
-
-        (function () {
-          module.exports = BufferWriter; // extends Writer
-
-          var Writer = require("./writer");
-
-          (BufferWriter.prototype = Object.create(Writer.prototype)).constructor = BufferWriter;
-
-          var util = require("./util/minimal");
-          /**
-           * Constructs a new buffer writer instance.
-           * @classdesc Wire format writer using node buffers.
-           * @extends Writer
-           * @constructor
-           */
-
-
-          function BufferWriter() {
-            Writer.call(this);
-          }
-
-          BufferWriter._configure = function () {
-            /**
-             * Allocates a buffer of the specified size.
-             * @function
-             * @param {number} size Buffer size
-             * @returns {Buffer} Buffer
-             */
-            BufferWriter.alloc = util._Buffer_allocUnsafe;
-            BufferWriter.writeBytesBuffer = util.Buffer && util.Buffer.prototype instanceof Uint8Array && util.Buffer.prototype.set.name === "set" ? function writeBytesBuffer_set(val, buf, pos) {
-              buf.set(val, pos); // faster than copy (requires node >= 4 where Buffers extend Uint8Array and set is properly inherited)
-              // also works for plain array values
-            }
-            /* istanbul ignore next */
-            : function writeBytesBuffer_copy(val, buf, pos) {
-              if (val.copy) // Buffer values
-                val.copy(buf, pos, 0, val.length);else for (var i = 0; i < val.length;) {
-                // plain array values
-                buf[pos++] = val[i++];
-              }
-            };
-          };
-          /**
-           * @override
-           */
-
-
-          BufferWriter.prototype.bytes = function write_bytes_buffer(value) {
-            if (util.isString(value)) value = util._Buffer_from(value, "base64");
-            var len = value.length >>> 0;
-            this.uint32(len);
-            if (len) this._push(BufferWriter.writeBytesBuffer, len, value);
-            return this;
-          };
-
-          function writeStringBuffer(val, buf, pos) {
-            if (val.length < 40) // plain js is faster for short strings (probably due to redundant assertions)
-              util.utf8.write(val, buf, pos);else if (buf.utf8Write) buf.utf8Write(val, pos);else buf.write(val, pos);
-          }
-          /**
-           * @override
-           */
-
-
-          BufferWriter.prototype.string = function write_string_buffer(value) {
-            var len = util.Buffer.byteLength(value);
-            this.uint32(len);
-            if (len) this._push(writeStringBuffer, len, value);
-            return this;
-          };
-          /**
-           * Finishes the write operation.
-           * @name BufferWriter#finish
-           * @function
-           * @returns {Buffer} Finished buffer
-           */
-
-
-          BufferWriter._configure();
-        })();
-
-        _cjsExports = exports('default', module.exports);
-      });
-
-      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
-    }
-  };
-});
-
-System.register("chunks:///_virtual/roots.js", ['./cjs-loader.mjs'], function (exports, module) {
-  'use strict';
-
-  var loader;
-  return {
-    setters: [function (module) {
-      loader = module.default;
-    }],
-    execute: function () {
-      exports('default', void 0);
-
-      var _cjsExports;
-
-      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
-        var require = loader.createRequireWithReqMap({}, _require);
-
-        (function () {
-          module.exports = {};
-          /**
-           * Named roots.
-           * This is where pbjs stores generated structures (the option `-r, --root` specifies a name).
-           * Can also be used manually to make roots available accross modules.
-           * @name roots
-           * @type {Object.<string,Root>}
-           * @example
-           * // pbjs -r myroot -o compiled.js ...
-           *
-           * // in another module:
-           * require("./compiled.js");
-           *
-           * // in any subsequent module:
-           * var root = protobuf.roots["myroot"];
-           */
-        })();
-
-        _cjsExports = exports('default', module.exports);
-      });
-
-      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
-    }
-  };
-});
-
 System.register("chunks:///_virtual/rpc.js", ['./cjs-loader.mjs', './service.js'], function (exports, module) {
   'use strict';
 
@@ -1883,7 +1799,90 @@ System.register("chunks:///_virtual/rpc.js", ['./cjs-loader.mjs', './service.js'
   };
 });
 
-System.register("chunks:///_virtual/minimal2.js", ['./cjs-loader.mjs', './index.js', './index7.js', './index4.js', './index2.js', './index5.js', './index3.js', './index6.js', './longbits.js'], function (exports, module) {
+System.register("chunks:///_virtual/reader_buffer.js", ['./cjs-loader.mjs', './minimal2.js', './reader.js'], function (exports, module) {
+  'use strict';
+
+  var loader, __cjsMetaURL$2, __cjsMetaURL$1;
+
+  return {
+    setters: [function (module) {
+      loader = module.default;
+    }, function (module) {
+      __cjsMetaURL$2 = module.__cjsMetaURL;
+    }, function (module) {
+      __cjsMetaURL$1 = module.__cjsMetaURL;
+    }],
+    execute: function () {
+      exports('default', void 0);
+
+      var _cjsExports;
+
+      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
+        var require = loader.createRequireWithReqMap({
+          "./reader": __cjsMetaURL$1,
+          "./util/minimal": __cjsMetaURL$2
+        }, _require);
+
+        (function () {
+          module.exports = BufferReader; // extends Reader
+
+          var Reader = require("./reader");
+
+          (BufferReader.prototype = Object.create(Reader.prototype)).constructor = BufferReader;
+
+          var util = require("./util/minimal");
+          /**
+           * Constructs a new buffer reader instance.
+           * @classdesc Wire format reader using node buffers.
+           * @extends Reader
+           * @constructor
+           * @param {Buffer} buffer Buffer to read from
+           */
+
+
+          function BufferReader(buffer) {
+            Reader.call(this, buffer);
+            /**
+             * Read buffer.
+             * @name BufferReader#buf
+             * @type {Buffer}
+             */
+          }
+
+          BufferReader._configure = function () {
+            /* istanbul ignore else */
+            if (util.Buffer) BufferReader.prototype._slice = util.Buffer.prototype.slice;
+          };
+          /**
+           * @override
+           */
+
+
+          BufferReader.prototype.string = function read_string_buffer() {
+            var len = this.uint32(); // modifies pos
+
+            return this.buf.utf8Slice ? this.buf.utf8Slice(this.pos, this.pos = Math.min(this.pos + len, this.len)) : this.buf.toString("utf-8", this.pos, this.pos = Math.min(this.pos + len, this.len));
+          };
+          /**
+           * Reads a sequence of bytes preceeded by its length as a varint.
+           * @name BufferReader#bytes
+           * @function
+           * @returns {Buffer} Value read
+           */
+
+
+          BufferReader._configure();
+        })();
+
+        _cjsExports = exports('default', module.exports);
+      });
+
+      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
+    }
+  };
+});
+
+System.register("chunks:///_virtual/minimal2.js", ['./cjs-loader.mjs', './index5.js', './index4.js', './index3.js', './index2.js', './index.js', './index7.js', './index6.js', './longbits.js'], function (exports, module) {
   'use strict';
 
   var loader, __cjsMetaURL$1, __cjsMetaURL$2, __cjsMetaURL$3, __cjsMetaURL$4, __cjsMetaURL$5, __cjsMetaURL$6, __cjsMetaURL$7, __cjsMetaURL$8;
@@ -2770,65 +2769,23 @@ System.register("chunks:///_virtual/index.js", ['./cjs-loader.mjs'], function (e
         var require = loader.createRequireWithReqMap({}, _require);
 
         (function () {
-          module.exports = asPromise;
+          module.exports = inquire;
           /**
-           * Callback as used by {@link util.asPromise}.
-           * @typedef asPromiseCallback
-           * @type {function}
-           * @param {Error|null} error Error, if any
-           * @param {...*} params Additional arguments
-           * @returns {undefined}
-           */
-
-          /**
-           * Returns a promise from a node-style callback function.
+           * Requires a module only if available.
            * @memberof util
-           * @param {asPromiseCallback} fn Function to call
-           * @param {*} ctx Function context
-           * @param {...*} params Function arguments
-           * @returns {Promise<*>} Promisified function
+           * @param {string} moduleName Module to require
+           * @returns {?Object} Required module if available and not empty, otherwise `null`
            */
 
-          function asPromise(fn, ctx
-          /*, varargs */
-          ) {
-            var params = new Array(arguments.length - 1),
-                offset = 0,
-                index = 2,
-                pending = true;
+          function inquire(moduleName) {
+            try {
+              var mod = eval("quire".replace(/^/, "re"))(moduleName); // eslint-disable-line no-eval
 
-            while (index < arguments.length) {
-              params[offset++] = arguments[index++];
-            }
+              if (mod && (mod.length || Object.keys(mod).length)) return mod;
+            } catch (e) {} // eslint-disable-line no-empty
 
-            return new Promise(function executor(resolve, reject) {
-              params[offset] = function callback(err
-              /*, varargs */
-              ) {
-                if (pending) {
-                  pending = false;
-                  if (err) reject(err);else {
-                    var params = new Array(arguments.length - 1),
-                        offset = 0;
 
-                    while (offset < params.length) {
-                      params[offset++] = arguments[offset];
-                    }
-
-                    resolve.apply(null, params);
-                  }
-                }
-              };
-
-              try {
-                fn.apply(ctx || null, params);
-              } catch (err) {
-                if (pending) {
-                  pending = false;
-                  reject(err);
-                }
-              }
-            });
+            return null;
           }
         })();
 
@@ -3197,137 +3154,6 @@ System.register("chunks:///_virtual/index3.js", ['./cjs-loader.mjs'], function (
         var require = loader.createRequireWithReqMap({}, _require);
 
         (function () {
-          /**
-           * A minimal UTF8 implementation for number arrays.
-           * @memberof util
-           * @namespace
-           */
-          var utf8 = exports$1;
-          /**
-           * Calculates the UTF8 byte length of a string.
-           * @param {string} string String
-           * @returns {number} Byte length
-           */
-
-          utf8.length = function utf8_length(string) {
-            var len = 0,
-                c = 0;
-
-            for (var i = 0; i < string.length; ++i) {
-              c = string.charCodeAt(i);
-              if (c < 128) len += 1;else if (c < 2048) len += 2;else if ((c & 0xFC00) === 0xD800 && (string.charCodeAt(i + 1) & 0xFC00) === 0xDC00) {
-                ++i;
-                len += 4;
-              } else len += 3;
-            }
-
-            return len;
-          };
-          /**
-           * Reads UTF8 bytes as a string.
-           * @param {Uint8Array} buffer Source buffer
-           * @param {number} start Source start
-           * @param {number} end Source end
-           * @returns {string} String read
-           */
-
-
-          utf8.read = function utf8_read(buffer, start, end) {
-            var len = end - start;
-            if (len < 1) return "";
-            var parts = null,
-                chunk = [],
-                i = 0,
-                // char offset
-            t; // temporary
-
-            while (start < end) {
-              t = buffer[start++];
-              if (t < 128) chunk[i++] = t;else if (t > 191 && t < 224) chunk[i++] = (t & 31) << 6 | buffer[start++] & 63;else if (t > 239 && t < 365) {
-                t = ((t & 7) << 18 | (buffer[start++] & 63) << 12 | (buffer[start++] & 63) << 6 | buffer[start++] & 63) - 0x10000;
-                chunk[i++] = 0xD800 + (t >> 10);
-                chunk[i++] = 0xDC00 + (t & 1023);
-              } else chunk[i++] = (t & 15) << 12 | (buffer[start++] & 63) << 6 | buffer[start++] & 63;
-
-              if (i > 8191) {
-                (parts || (parts = [])).push(String.fromCharCode.apply(String, chunk));
-                i = 0;
-              }
-            }
-
-            if (parts) {
-              if (i) parts.push(String.fromCharCode.apply(String, chunk.slice(0, i)));
-              return parts.join("");
-            }
-
-            return String.fromCharCode.apply(String, chunk.slice(0, i));
-          };
-          /**
-           * Writes a string as UTF8 bytes.
-           * @param {string} string Source string
-           * @param {Uint8Array} buffer Destination buffer
-           * @param {number} offset Destination offset
-           * @returns {number} Bytes written
-           */
-
-
-          utf8.write = function utf8_write(string, buffer, offset) {
-            var start = offset,
-                c1,
-                // character 1
-            c2; // character 2
-
-            for (var i = 0; i < string.length; ++i) {
-              c1 = string.charCodeAt(i);
-
-              if (c1 < 128) {
-                buffer[offset++] = c1;
-              } else if (c1 < 2048) {
-                buffer[offset++] = c1 >> 6 | 192;
-                buffer[offset++] = c1 & 63 | 128;
-              } else if ((c1 & 0xFC00) === 0xD800 && ((c2 = string.charCodeAt(i + 1)) & 0xFC00) === 0xDC00) {
-                c1 = 0x10000 + ((c1 & 0x03FF) << 10) + (c2 & 0x03FF);
-                ++i;
-                buffer[offset++] = c1 >> 18 | 240;
-                buffer[offset++] = c1 >> 12 & 63 | 128;
-                buffer[offset++] = c1 >> 6 & 63 | 128;
-                buffer[offset++] = c1 & 63 | 128;
-              } else {
-                buffer[offset++] = c1 >> 12 | 224;
-                buffer[offset++] = c1 >> 6 & 63 | 128;
-                buffer[offset++] = c1 & 63 | 128;
-              }
-            }
-
-            return offset - start;
-          };
-        })();
-
-        _cjsExports = exports('default', module.exports);
-      });
-
-      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
-    }
-  };
-});
-
-System.register("chunks:///_virtual/index4.js", ['./cjs-loader.mjs'], function (exports, module) {
-  'use strict';
-
-  var loader;
-  return {
-    setters: [function (module) {
-      loader = module.default;
-    }],
-    execute: function () {
-      exports('default', void 0);
-
-      var _cjsExports;
-
-      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
-        var require = loader.createRequireWithReqMap({}, _require);
-
-        (function () {
           module.exports = EventEmitter;
           /**
            * Constructs a new event emitter instance.
@@ -3416,127 +3242,7 @@ System.register("chunks:///_virtual/index4.js", ['./cjs-loader.mjs'], function (
   };
 });
 
-System.register("chunks:///_virtual/index5.js", ['./cjs-loader.mjs'], function (exports, module) {
-  'use strict';
-
-  var loader;
-  return {
-    setters: [function (module) {
-      loader = module.default;
-    }],
-    execute: function () {
-      exports('default', void 0);
-
-      var _cjsExports;
-
-      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
-        var require = loader.createRequireWithReqMap({}, _require);
-
-        (function () {
-          module.exports = inquire;
-          /**
-           * Requires a module only if available.
-           * @memberof util
-           * @param {string} moduleName Module to require
-           * @returns {?Object} Required module if available and not empty, otherwise `null`
-           */
-
-          function inquire(moduleName) {
-            try {
-              var mod = eval("quire".replace(/^/, "re"))(moduleName); // eslint-disable-line no-eval
-
-              if (mod && (mod.length || Object.keys(mod).length)) return mod;
-            } catch (e) {} // eslint-disable-line no-empty
-
-
-            return null;
-          }
-        })();
-
-        _cjsExports = exports('default', module.exports);
-      });
-
-      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
-    }
-  };
-});
-
-System.register("chunks:///_virtual/index6.js", ['./cjs-loader.mjs'], function (exports, module) {
-  'use strict';
-
-  var loader;
-  return {
-    setters: [function (module) {
-      loader = module.default;
-    }],
-    execute: function () {
-      exports('default', void 0);
-
-      var _cjsExports;
-
-      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
-        var require = loader.createRequireWithReqMap({}, _require);
-
-        (function () {
-          module.exports = pool;
-          /**
-           * An allocator as used by {@link util.pool}.
-           * @typedef PoolAllocator
-           * @type {function}
-           * @param {number} size Buffer size
-           * @returns {Uint8Array} Buffer
-           */
-
-          /**
-           * A slicer as used by {@link util.pool}.
-           * @typedef PoolSlicer
-           * @type {function}
-           * @param {number} start Start offset
-           * @param {number} end End offset
-           * @returns {Uint8Array} Buffer slice
-           * @this {Uint8Array}
-           */
-
-          /**
-           * A general purpose buffer pool.
-           * @memberof util
-           * @function
-           * @param {PoolAllocator} alloc Allocator
-           * @param {PoolSlicer} slice Slicer
-           * @param {number} [size=8192] Slab size
-           * @returns {PoolAllocator} Pooled allocator
-           */
-
-          function pool(alloc, slice, size) {
-            var SIZE = size || 8192;
-            var MAX = SIZE >>> 1;
-            var slab = null;
-            var offset = SIZE;
-            return function pool_alloc(size) {
-              if (size < 1 || size > MAX) return alloc(size);
-
-              if (offset + size > SIZE) {
-                slab = alloc(SIZE);
-                offset = 0;
-              }
-
-              var buf = slice.call(slab, offset, offset += size);
-              if (offset & 7) // align to 32 bit
-                offset = (offset | 7) + 1;
-              return buf;
-            };
-          }
-        })();
-
-        _cjsExports = exports('default', module.exports);
-      });
-
-      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
-    }
-  };
-});
-
-System.register("chunks:///_virtual/index7.js", ['./cjs-loader.mjs'], function (exports, module) {
+System.register("chunks:///_virtual/index4.js", ['./cjs-loader.mjs'], function (exports, module) {
   'use strict';
 
   var loader;
@@ -3704,6 +3410,299 @@ System.register("chunks:///_virtual/index7.js", ['./cjs-loader.mjs'], function (
 
           base64.test = function test(string) {
             return /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test(string);
+          };
+        })();
+
+        _cjsExports = exports('default', module.exports);
+      });
+
+      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
+    }
+  };
+});
+
+System.register("chunks:///_virtual/index5.js", ['./cjs-loader.mjs'], function (exports, module) {
+  'use strict';
+
+  var loader;
+  return {
+    setters: [function (module) {
+      loader = module.default;
+    }],
+    execute: function () {
+      exports('default', void 0);
+
+      var _cjsExports;
+
+      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
+        var require = loader.createRequireWithReqMap({}, _require);
+
+        (function () {
+          module.exports = asPromise;
+          /**
+           * Callback as used by {@link util.asPromise}.
+           * @typedef asPromiseCallback
+           * @type {function}
+           * @param {Error|null} error Error, if any
+           * @param {...*} params Additional arguments
+           * @returns {undefined}
+           */
+
+          /**
+           * Returns a promise from a node-style callback function.
+           * @memberof util
+           * @param {asPromiseCallback} fn Function to call
+           * @param {*} ctx Function context
+           * @param {...*} params Function arguments
+           * @returns {Promise<*>} Promisified function
+           */
+
+          function asPromise(fn, ctx
+          /*, varargs */
+          ) {
+            var params = new Array(arguments.length - 1),
+                offset = 0,
+                index = 2,
+                pending = true;
+
+            while (index < arguments.length) {
+              params[offset++] = arguments[index++];
+            }
+
+            return new Promise(function executor(resolve, reject) {
+              params[offset] = function callback(err
+              /*, varargs */
+              ) {
+                if (pending) {
+                  pending = false;
+                  if (err) reject(err);else {
+                    var params = new Array(arguments.length - 1),
+                        offset = 0;
+
+                    while (offset < params.length) {
+                      params[offset++] = arguments[offset];
+                    }
+
+                    resolve.apply(null, params);
+                  }
+                }
+              };
+
+              try {
+                fn.apply(ctx || null, params);
+              } catch (err) {
+                if (pending) {
+                  pending = false;
+                  reject(err);
+                }
+              }
+            });
+          }
+        })();
+
+        _cjsExports = exports('default', module.exports);
+      });
+
+      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
+    }
+  };
+});
+
+System.register("chunks:///_virtual/index6.js", ['./cjs-loader.mjs'], function (exports, module) {
+  'use strict';
+
+  var loader;
+  return {
+    setters: [function (module) {
+      loader = module.default;
+    }],
+    execute: function () {
+      exports('default', void 0);
+
+      var _cjsExports;
+
+      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
+        var require = loader.createRequireWithReqMap({}, _require);
+
+        (function () {
+          module.exports = pool;
+          /**
+           * An allocator as used by {@link util.pool}.
+           * @typedef PoolAllocator
+           * @type {function}
+           * @param {number} size Buffer size
+           * @returns {Uint8Array} Buffer
+           */
+
+          /**
+           * A slicer as used by {@link util.pool}.
+           * @typedef PoolSlicer
+           * @type {function}
+           * @param {number} start Start offset
+           * @param {number} end End offset
+           * @returns {Uint8Array} Buffer slice
+           * @this {Uint8Array}
+           */
+
+          /**
+           * A general purpose buffer pool.
+           * @memberof util
+           * @function
+           * @param {PoolAllocator} alloc Allocator
+           * @param {PoolSlicer} slice Slicer
+           * @param {number} [size=8192] Slab size
+           * @returns {PoolAllocator} Pooled allocator
+           */
+
+          function pool(alloc, slice, size) {
+            var SIZE = size || 8192;
+            var MAX = SIZE >>> 1;
+            var slab = null;
+            var offset = SIZE;
+            return function pool_alloc(size) {
+              if (size < 1 || size > MAX) return alloc(size);
+
+              if (offset + size > SIZE) {
+                slab = alloc(SIZE);
+                offset = 0;
+              }
+
+              var buf = slice.call(slab, offset, offset += size);
+              if (offset & 7) // align to 32 bit
+                offset = (offset | 7) + 1;
+              return buf;
+            };
+          }
+        })();
+
+        _cjsExports = exports('default', module.exports);
+      });
+
+      var __cjsMetaURL = exports('__cjsMetaURL', module.meta.url);
+    }
+  };
+});
+
+System.register("chunks:///_virtual/index7.js", ['./cjs-loader.mjs'], function (exports, module) {
+  'use strict';
+
+  var loader;
+  return {
+    setters: [function (module) {
+      loader = module.default;
+    }],
+    execute: function () {
+      exports('default', void 0);
+
+      var _cjsExports;
+
+      loader.define(module.meta.url, function (exports$1, _require, module, __filename, __dirname) {
+        var require = loader.createRequireWithReqMap({}, _require);
+
+        (function () {
+          /**
+           * A minimal UTF8 implementation for number arrays.
+           * @memberof util
+           * @namespace
+           */
+          var utf8 = exports$1;
+          /**
+           * Calculates the UTF8 byte length of a string.
+           * @param {string} string String
+           * @returns {number} Byte length
+           */
+
+          utf8.length = function utf8_length(string) {
+            var len = 0,
+                c = 0;
+
+            for (var i = 0; i < string.length; ++i) {
+              c = string.charCodeAt(i);
+              if (c < 128) len += 1;else if (c < 2048) len += 2;else if ((c & 0xFC00) === 0xD800 && (string.charCodeAt(i + 1) & 0xFC00) === 0xDC00) {
+                ++i;
+                len += 4;
+              } else len += 3;
+            }
+
+            return len;
+          };
+          /**
+           * Reads UTF8 bytes as a string.
+           * @param {Uint8Array} buffer Source buffer
+           * @param {number} start Source start
+           * @param {number} end Source end
+           * @returns {string} String read
+           */
+
+
+          utf8.read = function utf8_read(buffer, start, end) {
+            var len = end - start;
+            if (len < 1) return "";
+            var parts = null,
+                chunk = [],
+                i = 0,
+                // char offset
+            t; // temporary
+
+            while (start < end) {
+              t = buffer[start++];
+              if (t < 128) chunk[i++] = t;else if (t > 191 && t < 224) chunk[i++] = (t & 31) << 6 | buffer[start++] & 63;else if (t > 239 && t < 365) {
+                t = ((t & 7) << 18 | (buffer[start++] & 63) << 12 | (buffer[start++] & 63) << 6 | buffer[start++] & 63) - 0x10000;
+                chunk[i++] = 0xD800 + (t >> 10);
+                chunk[i++] = 0xDC00 + (t & 1023);
+              } else chunk[i++] = (t & 15) << 12 | (buffer[start++] & 63) << 6 | buffer[start++] & 63;
+
+              if (i > 8191) {
+                (parts || (parts = [])).push(String.fromCharCode.apply(String, chunk));
+                i = 0;
+              }
+            }
+
+            if (parts) {
+              if (i) parts.push(String.fromCharCode.apply(String, chunk.slice(0, i)));
+              return parts.join("");
+            }
+
+            return String.fromCharCode.apply(String, chunk.slice(0, i));
+          };
+          /**
+           * Writes a string as UTF8 bytes.
+           * @param {string} string Source string
+           * @param {Uint8Array} buffer Destination buffer
+           * @param {number} offset Destination offset
+           * @returns {number} Bytes written
+           */
+
+
+          utf8.write = function utf8_write(string, buffer, offset) {
+            var start = offset,
+                c1,
+                // character 1
+            c2; // character 2
+
+            for (var i = 0; i < string.length; ++i) {
+              c1 = string.charCodeAt(i);
+
+              if (c1 < 128) {
+                buffer[offset++] = c1;
+              } else if (c1 < 2048) {
+                buffer[offset++] = c1 >> 6 | 192;
+                buffer[offset++] = c1 & 63 | 128;
+              } else if ((c1 & 0xFC00) === 0xD800 && ((c2 = string.charCodeAt(i + 1)) & 0xFC00) === 0xDC00) {
+                c1 = 0x10000 + ((c1 & 0x03FF) << 10) + (c2 & 0x03FF);
+                ++i;
+                buffer[offset++] = c1 >> 18 | 240;
+                buffer[offset++] = c1 >> 12 & 63 | 128;
+                buffer[offset++] = c1 >> 6 & 63 | 128;
+                buffer[offset++] = c1 & 63 | 128;
+              } else {
+                buffer[offset++] = c1 >> 12 | 224;
+                buffer[offset++] = c1 >> 6 & 63 | 128;
+                buffer[offset++] = c1 & 63 | 128;
+              }
+            }
+
+            return offset - start;
           };
         })();
 
